@@ -5,6 +5,7 @@ import os
 import pandas as pd 
 
 df = pd.read_csv("knowledge_base.csv")
+assert all(col in df.columns for col in ["id", "text", "source"]), "Missing required columns"
 embeddings = OllamaEmbeddings(model="mxbai-embed-large")
 
 db_location = "./chroma_langchain_db"
